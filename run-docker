@@ -79,7 +79,7 @@ else
     else
         BUILD_COMMAND=build
     fi
-    docker run --rm $ANNOTATE -v $INFILE:/home/builder/bench-file.cpp $MEMORY_LIMITS --cidfile=$CIDFILE -v $TARG_OUTFILE:/home/builder/bench.out -t fredtingaud/quick-bench:$COMPILER /bin/bash -c "./$BUILD_COMMAND $OPTIM $VERSION && $ANNOTATE_RECORD ./run $ANNOTATE_CMD"
+    docker run --rm $ANNOTATE -v "$INFILE:/home/builder/bench-file.cpp" $MEMORY_LIMITS --cidfile=$CIDFILE -v "$TARG_OUTFILE:/home/builder/bench.out" -t "fredtingaud/quick-bench:$COMPILER" /bin/bash -c "./$BUILD_COMMAND $OPTIM $VERSION && $ANNOTATE_RECORD ./run $ANNOTATE_CMD"
     rm $CIDFILE
 fi
 
